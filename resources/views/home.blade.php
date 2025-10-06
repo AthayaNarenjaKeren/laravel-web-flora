@@ -74,11 +74,27 @@
 
             {{-- Fitur 2 --}}
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Struktur Blade</h5>
-                        <p class="card-text">Menggunakan sistem layout Blade yang efisien untuk kemudahan maintenance
-                            dan pengembangan.</p>
+                        <h5 class="card-title">Form Pertanyaan</h5>
+                        <form action="{{ route('question.store') }}" method="POST">
+                        @csrf
+
+                        <form action="" method="POST">
+                            <div class="mb-3">
+                                <label for="nama" class="form-label">Nama</label>
+                                <input type="text" class="form-control" name="nama">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pertanyaan" class="form-label">Pertanyaan</label>
+                                <textarea class="form-control" rows="4" name="pertanyaan"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
+                        </form>
                     </div>
                 </div>
             </div>
