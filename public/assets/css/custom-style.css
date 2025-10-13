@@ -4,10 +4,14 @@
 }
 
 @font-face {
-    font-family: 'MyCustomFont';
-    src: url('assets/fonts/ComicNeue-Light.ttf');
+    font-family: 'ComicNeue-bold';
+    src: url('assets/fonts/ComicNeue-bold.ttf');
 }
 
 .font-custom{
-    font-family: 'ComicNeue-Light';
+    font-family: 'ComicNeue-bold';
+}
+
+body {
+    font-family: 'ComicNeue-bold';
 }
