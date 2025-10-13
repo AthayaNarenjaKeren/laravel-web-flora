@@ -1,0 +1,13 @@
+.navbar-Logo{
+    height: 40px;
+    weight: auto ;
+}
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('assets/fonts/ComicNeue-Light.ttf'));
+}
+
+.font-custom{
+    font-family: 'ComicNeue-Light';
+}

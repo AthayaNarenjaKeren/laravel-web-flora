@@ -10,7 +10,8 @@
 
     {{-- Bootstrap 5 CSS dari CDN untuk styling --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}">
 </head>
 
 <body>
@@ -68,6 +69,7 @@
                         <h5 class="card-title">Desain Modern</h5>
                         <p class="card-text">Dibangun dengan Bootstrap 5 untuk memastikan tampilan yang bersih dan
                             responsif di semua perangkat.</p>
+                            <img src="{{ asset('assets/images/dream.png') }}" alt="Logo">
                     </div>
                 </div>
             </div>
