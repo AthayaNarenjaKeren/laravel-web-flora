@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'List Pelanggan')
+@section('title', 'List Users')
 @section('content')
 
 {{-- ini konten --}}
@@ -16,50 +16,51 @@
                     </svg>
                 </a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ route('pelanggan.index') }}">Pelanggan</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
         </ol>
     </nav>
     <div class="d-flex justify-content-between w-100 flex-wrap">
         <div class="mb-3 mb-lg-0">
-            <h1 class="h4">Data Pelanggan</h1>
-            <p class="mb-0">List data seluruh pelanggan</p>
+            <h1 class="h4">Data Users</h1>
+            <p class="mb-0">List data seluruh users</p>
         </div>
         <div>
-            <a href="{{ route('pelanggan.create') }}" class="btn btn-success text-white"><i
-                    class="far fa-question-circle me-1"></i> Tambah Pelanggan</a>
+            <a href="{{ route('users.create') }}" class="btn btn-success text-white"><i
+                    class="far fa-question-circle me-1"></i> Tambah User</a>
         </div>
     </div>
 </div>
+
+{{-- TAMBAHKAN FLASH MESSAGE --}}
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card border-0 shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="table-pelanggan" class="table table-centered table-nowrap mb-0 rounded">
+                    <table id="table-users" class="table table-centered table-nowrap mb-0 rounded">
                         <thead class="thead-light">
                             <tr>
-                                <th class="border-0">First Name</th>
-                                <th class="border-0">Last Name</th>
-                                <th class="border-0">Birthday</th>
-                                <th class="border-0">Gender</th>
+                                <th class="border-0">Name</th> {{-- GANTI: First Name -> Name --}}
                                 <th class="border-0">Email</th>
-                                <th class="border-0">Phone</th>
+                                <th class="border-0">Password</th> {{-- OPSIONAL --}}
                                 <th class="border-0 rounded-end">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dataPelanggan as $item)
+                            @foreach ($dataUser as $item)
                                 <tr>
-                                    <td>{{ $item->first_name }}</td>
-                                    <td>{{ $item->last_name }}</td>
-                                    <td>{{ $item->birthday }}</td>
-                                    <td>{{ $item->gender }}</td>
+                                    <td>{{ $item->name }}</td> {{-- GANTI: first_name -> name --}}
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->phone }}</td>
-                                    <td><a href="" class="btn btn-info btn-sm">
-                                    <td><a href="{{ route('pelanggan.edit', $item->pelanggan_id) }}"
-                                            class="btn btn-info btn-sm">
+                                    <td>{{ $item->created_at->format('d/m/Y') }}</td> {{-- OPSIONAL --}}
+                                    <td>
+                                        <a href="{{ route('users.edit', $item->id) }}" class="btn btn-info btn-sm">
                                             <svg class="icon icon-xs me-2" data-slot="icon" fill="none"
                                                 stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -68,7 +69,18 @@
                                                 </path>
                                             </svg>
                                             Edit
-                                        </a></td>
+                                        </a>
+
+                                        {{-- TOMBOL DELETE (OPSIONAL) --}}
+                                        <form action="{{ route('users.destroy', $item->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Yakin ingin menghapus user ini?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -38,13 +38,15 @@
                                     <!-- First Name -->
                                     <div class="mb-3">
                                         <label for="first_name" class="form-label">First name</label>
-                                        <input type="text" id="first_name" name="first_name" class="form-control" required>
+                                        <input type="text" id="first_name" name="first_name" class="form-control" required
+                                        value="{{ old('first_name') }}">
                                     </div>
 
                                     <!-- Last Name -->
                                     <div class="mb-3">
                                         <label for="last_name" class="form-label">Last name</label>
-                                        <input type="text" id="last_name" name="last_name" class="form-control" required>
+                                        <input type="text" id="last_name" name="last_name" class="form-control" required
+                                        value="{{ old('last_name') }}">
                                     </div>
                                 </div>
 
