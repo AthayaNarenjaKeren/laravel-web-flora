@@ -23,9 +23,9 @@ class UserController extends Controller
     {
         // VALIDASI SEDERHANA
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:3',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         // BUAT USER
@@ -47,11 +47,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-
+        
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'nullable|min:3',
+            'password' => 'nullable|min:8|confirmed',
         ]);
 
         $user->name = $request->name;
