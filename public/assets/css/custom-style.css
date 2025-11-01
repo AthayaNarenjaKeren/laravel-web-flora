@@ -1,0 +1,17 @@
+.navbar-Logo {
+    height: 40px;
+    width: auto;
+}
+
+@font-face {
+    font-family: 'ComicNeue-bold';
+    src: url('assets/fonts/ComicNeue-bold.ttf');
+}
+
+.font-custom{
+    font-family: 'ComicNeue-bold';
+}
+
+body {
+    font-family: 'ComicNeue-bold';
+}
