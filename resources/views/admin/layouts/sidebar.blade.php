@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
+<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
         <a class="navbar-brand me-lg-5" href="../../index.html">
             <img class="navbar-brand-dark" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" /> <img
                 class="navbar-brand-light" src="{{ asset('') }}assets-admin/img/brand/dark.svg" alt="Volt logo" />
@@ -83,7 +83,7 @@
                         <span class="sidebar-text">Pelanggan</span>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('users') ? 'active' : '' }}">
                     <a href="{{ route('users.index') }}" class="nav-link">
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"

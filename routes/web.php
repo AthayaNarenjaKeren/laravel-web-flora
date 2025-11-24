@@ -10,8 +10,6 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Models\User;
-use Illuminate\Database\Seeder;
 
 Route::get('/pcr', function () {
     return 'selamat datang di website kampus PCR!';
@@ -54,3 +52,22 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 
 Route::resource('users', UserController::class);
 
+// Public Routes
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Redirect root to login
+Route::get('/', function () {
+    return redirect('/login');
+});
+
+// Protected Routes (harus login)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+    // CRUD Routes
+    Route::resource('users', UserController::class);
+    Route::resource('pelanggan', PelangganController::class);
+});
